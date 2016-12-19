@@ -1,9 +1,19 @@
-0.  TODO
-1.  TODO
-2.  TODO
-3.  TODO
-4.  TODO
-5.  TODO
+0.  noun: pneumonoultramicroscopicsilicovolcanoconiosis
+    an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+1.  getrusage() returns resource usage measures for who, which can be either itself or children or a thread.
+2.  16-2 structs and 14 long variables
+3.  because using pointers is more memory efficient and faster
+4.  for loop take one character at a time till the end of file and it first has variables like:-
+    1 index-it tells about the character number of character in a word and checks that it should not increase more than 45.
+    2 misspellings-no of word that are not spellings like has character different from alaphabets and apostrophes
+    3 words - has a count of correct words
+    so first a character is scanned from file and then it is checked if it is valid character if so it increase index but if index
+    go above 45 then the word in not valid word so we will iterate till we get a char which is not alpha so that after next word 
+    starts and after that reinitialise index to 0.else if we get numerical character we willl do the same. and else if we get a 
+    index>0 it means we found a word.then its is checked for misspelled and if misspelled then increase misspell counter by 1.
+    
+5.  fgetc checks the character is a valid letter and fscanf doesn't check each character and might return a string with invalid 
+    characters (for example comma).
 6.  TODO
 7.  TODO
 8.  TODO
