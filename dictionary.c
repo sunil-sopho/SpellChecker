@@ -25,7 +25,20 @@ bool check(const char* word)
  */
 bool load(const char* dictionary)
 {
-    // TODO
+    // definig a tries
+    typedef struct node
+    {
+        bool word;
+        struct node* chil[27];            // 27 due to 26 characters and apostrophe
+    }
+    node;
+    
+    // opening the dictionary file for loading.
+    FILE* fp = fopen(dictionary,"r");
+    for(int c=fgetc(fp);c != EOF;c=fgetc(fp))
+    {
+        
+    }
     return false;
 }
 
