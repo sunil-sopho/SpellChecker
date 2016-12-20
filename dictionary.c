@@ -39,6 +39,12 @@ bool load(const char* dictionary)
     index=0;
     // opening the dictionary file for loading.
     FILE* fp = fopen(dictionary,"r");
+    if(fp=NULL)
+    {
+        printf("error in opening dictionary file");
+        return false;
+    }
+    
     for(int c=fgetc(fp);c != EOF;c=fgetc(fp))
     {
         // first character of word should go to root
@@ -47,18 +53,21 @@ bool load(const char* dictionary)
             int num=(c-'a');
             node->children[num]=malloc(sizeof(node));
             loca=node->chil[num];
+            index++;
         }
         else if(isalpha(c))
         {
             int num=(c-'a');
             loca->chil[num]=malloc(sizeof(node));
             loca=loca->chil[num];
+            index++;
         }
         // takeing care of apostorhe
         else if(c=='\'')
         {
             loca->chil[26]=malloc(sizeof(node));
             loca=loca->chil[26];
+            index++;
         }
         // and if we encountered a \n then it means the word ended
         else
@@ -67,7 +76,7 @@ bool load(const char* dictionary)
             index=0;
         }
     }
-    return false;
+    return true;
 }
 
 /**
