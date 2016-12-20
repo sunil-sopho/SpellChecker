@@ -46,11 +46,25 @@ bool load(const char* dictionary)
         {
             int num=(c-'a');
             node->children[num]=malloc(sizeof(node));
-            loca=node->children[num];
+            loca=node->chil[num];
         }
         else if(isalpha(c))
         {
-            
+            int num=(c-'a');
+            loca->chil[num]=malloc(sizeof(node));
+            loca=loca->chil[num];
+        }
+        // takeing care of apostorhe
+        else if(c=='\'')
+        {
+            loca->chil[26]=malloc(sizeof(node));
+            loca=loca->chil[26];
+        }
+        // and if we encountered a \n then it means the word ended
+        else
+        {
+            loca->word=true;
+            index=0;
         }
     }
     return false;
