@@ -8,6 +8,7 @@
  */
 
 #include <stdbool.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -16,7 +17,18 @@
  */
 bool check(const char* word)
 {
-    // TODO
+    // checking lenth of string
+    int len=strlen(word);
+    
+    int index=0;
+    for(index;index<len;index++)
+    {
+        // making character to integer to use function like isalpha
+        int c=word[index];
+        
+        //if is alpha then its between 0-25 and else its a apsotrophe so 26
+    }    
+    
     return false;
 }
 
