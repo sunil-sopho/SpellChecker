@@ -11,6 +11,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "dictionary.h"
 
@@ -38,7 +39,7 @@ bool check(const char* word)
     for(index;index<len+1;index++)
     {
         // if index=len the we should check if word exist
-        if(index=len)
+        if(index==len)
         {
             if(loca1->word)
             {
@@ -53,13 +54,13 @@ bool check(const char* word)
         int c=word[index];
         int num= c-'a';
         //if is alpha then its between 0-25 and else its a apsotrophe so 26
-        if(isalpha(c)&&index=0)
+        if(isalpha(c)&&index==0)
         {
             loca1=root->chil[num];
         }
         else if(isalpha(c))
         {
-            loca1=loca->chil[num];
+            loca1=loca1->chil[num];
             
             // if loca1 becomes null then word doesnt exist
             if(loca1==NULL)
@@ -91,10 +92,10 @@ bool load(const char* dictionary)
     // definig a tries
     // stores  current location in loca and remeber character number in index
     node* loca;
-    index=0;
+     int index=0;
     // opening the dictionary file for loading.
     FILE* fp = fopen(dictionary,"r");
-    if(fp=NULL)
+    if(fp==NULL)
     {
         printf("error in opening dictionary file");
         return false;
