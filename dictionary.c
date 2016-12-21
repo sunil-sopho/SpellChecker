@@ -20,6 +20,7 @@ bool check(const char* word)
     // checking lenth of string
     int len=strlen(word);
     
+    node* loca1;
     int index=0;
     for(index;index<len;index++)
     {
@@ -27,6 +28,15 @@ bool check(const char* word)
         int c=word[index];
         
         //if is alpha then its between 0-25 and else its a apsotrophe so 26
+        if(isalpha(c))
+        {
+            int num= c-'a';
+            loca=root->children[num];
+        }
+        else
+        {
+            loca=loca->children;
+        }
     }    
     
     return false;
