@@ -71,6 +71,9 @@ bool check(const char* word)
 /**
  * Loads dictionary into memory.  Returns true if successful else false.
  */
+// totale words load 
+int count=0;
+ 
 bool load(const char* dictionary)
 {
     // definig a tries
@@ -121,6 +124,7 @@ bool load(const char* dictionary)
         else
         {
             loca->word=true;
+            count++;
             index=0;
         }
     }
@@ -132,7 +136,7 @@ bool load(const char* dictionary)
  */
 unsigned int size(void)
 {
-    // TODO
+    return count;
     return 0;
 }
 
