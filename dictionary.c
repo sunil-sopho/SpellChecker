@@ -9,7 +9,8 @@
 
 #include <stdbool.h>
 #include <string.h>
-#include <ctype.c>
+#include <ctype.h>
+#include <stdio.h>
 
 #include "dictionary.h"
 
@@ -74,10 +75,8 @@ bool check(const char* word)
 // totale words load 
 int count=0;
  
-bool load(const char* dictionary)
-{
-    // definig a tries
-    typedef struct node
+// declared it as global so that it can be used in all functions
+  typedef struct node
     {
         bool word;
         struct node* chil[27];            // 27 due to 26 characters and apostrophe
@@ -85,6 +84,9 @@ bool load(const char* dictionary)
     node;
     node* root = malloc(sizeof(node));
     
+bool load(const char* dictionary)
+{
+    // definig a tries
     // stores  current location in loca and remeber character number in index
     node* loca;
     index=0;
