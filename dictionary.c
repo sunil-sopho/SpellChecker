@@ -150,9 +150,9 @@ bool unload(void)
     int tra=0;
     for(tra;tra<27;tra++)
     {
-        if(fre.chil[tra]!=NULL)
+        if(fre->chil[tra]!=NULL)
         {
-            clear(fre.chil[tra]);
+            clear(fre->chil[tra]);
         }
     }
     return false;
@@ -162,9 +162,9 @@ clear(node* current)
 {
     for(int i=0;i<27;i++)
     {
-        if(current.chil[i]!=NULL)
+        if(current->chil[i]!=NULL)
         {
-            clear(current.chil[i]);
+            clear(current->chil[i]);
         }
     }
     free(current);
