@@ -148,6 +148,9 @@ unsigned int size(void)
 /**
  * Unloads dictionary from memory.  Returns true if successful else false.
  */
+ // prototype
+void clear(node* current);
+
 bool unload(void)
 {
     // pointer to memory
