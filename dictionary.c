@@ -26,10 +26,17 @@ bool check(const char* word)
     for(index;index<len+1;index++)
     {
         // if index=len the we should check if word exist
-        if(loca1->word)
+        if(index=len)
         {
-            return true;
-        }
+            if(loca1->word)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }    
         // making character to integer to use function like isalpha
         int c=word[index];
         int num= c-'a';
@@ -41,10 +48,20 @@ bool check(const char* word)
         else if(isalpha(c))
         {
             loca1=loca->chil[num];
+            
+            // if loca1 becomes null then word doesnt exist
+            if(loca1==NULL)
+            {
+                return false;
+            }
         }
         else
         {
             loca=loca->chil[26];
+            if(loca1==NULL)
+            {
+                return false;
+            }
         }
     }    
     
