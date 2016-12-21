@@ -23,7 +23,7 @@
         struct node* chil[27];            // 27 due to 26 characters and apostrophe
     }
     node;
-    node* root = malloc(sizeof(node));
+    node* root;
 
 /**
  * Returns true if word is in dictionary else false.
@@ -36,7 +36,7 @@ bool check(const char* word)
     
     node* loca1;
     int index=0;
-    for(index;index<len+1;index++)
+    for(index=0;index<len+1;index++)
     {
         // if index=len the we should check if word exist
         if(index==len)
@@ -70,7 +70,7 @@ bool check(const char* word)
         }
         else
         {
-            loca=loca->chil[26];
+            loca1=loca1->chil[26];
             if(loca1==NULL)
             {
                 return false;
@@ -90,6 +90,7 @@ int count=0;
 bool load(const char* dictionary)
 {
     // definig a tries
+    root =malloc(sizeof(node));
     // stores  current location in loca and remeber character number in index
     node* loca;
      int index=0;
@@ -104,11 +105,11 @@ bool load(const char* dictionary)
     for(int c=fgetc(fp);c != EOF;c=fgetc(fp))
     {
         // first character of word should go to root
-        if(isalpha(c)&&index=0)
+        if((isalpha(c))&&(index=0))
         {
             int num=(c-'a');
-            node->children[num]=malloc(sizeof(node));
-            loca=node->chil[num];
+            root->chil[num]=malloc(sizeof(node));
+            loca=root->chil[num];
             index++;
         }
         else if(isalpha(c))
@@ -153,7 +154,7 @@ bool unload(void)
     node* fre=root;
     // int to keep track of chil number we are at
     int tra=0;
-    for(tra;tra<27;tra++)
+    for(tra=0;tra<27;tra++)
     {
         if(fre->chil[tra]!=NULL)
         {
@@ -163,7 +164,7 @@ bool unload(void)
     return true;
 }
 
-clear(node* current)
+void clear(node* current)
 {
     for(int i=0;i<27;i++)
     {
