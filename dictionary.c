@@ -14,9 +14,20 @@
 
 #include "dictionary.h"
 
+
+// declared it as global so that it can be used in all functions
+  typedef struct node
+    {
+        bool word;
+        struct node* chil[27];            // 27 due to 26 characters and apostrophe
+    }
+    node;
+    node* root = malloc(sizeof(node));
+
 /**
  * Returns true if word is in dictionary else false.
  */
+ 
 bool check(const char* word)
 {
     // checking lenth of string
@@ -74,15 +85,6 @@ bool check(const char* word)
  */
 // totale words load 
 int count=0;
- 
-// declared it as global so that it can be used in all functions
-  typedef struct node
-    {
-        bool word;
-        struct node* chil[27];            // 27 due to 26 characters and apostrophe
-    }
-    node;
-    node* root = malloc(sizeof(node));
     
 bool load(const char* dictionary)
 {
@@ -157,7 +159,7 @@ bool unload(void)
             clear(fre->chil[tra]);
         }
     }
-    return false;
+    return true;
 }
 
 clear(node* current)
