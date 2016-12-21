@@ -137,7 +137,6 @@ bool load(const char* dictionary)
 unsigned int size(void)
 {
     return count;
-    return 0;
 }
 
 /**
@@ -145,6 +144,28 @@ unsigned int size(void)
  */
 bool unload(void)
 {
-    // TODO
+    // pointer to memory
+    node* fre=root;
+    // int to keep track of chil number we are at
+    int tra=0;
+    for(tra;tra<27;tra++)
+    {
+        if(fre.chil[tra]!=NULL)
+        {
+            clear(fre.chil[tra]);
+        }
+    }
     return false;
+}
+
+clear(node* current)
+{
+    for(int i=0;i<27;i++)
+    {
+        if(current.chil[i]!=NULL)
+        {
+            clear(current.chil[i]);
+        }
+    }
+    free(current);
 }
