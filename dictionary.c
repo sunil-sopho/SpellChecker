@@ -9,6 +9,7 @@
 
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.c>
 
 #include "dictionary.h"
 
@@ -22,20 +23,28 @@ bool check(const char* word)
     
     node* loca1;
     int index=0;
-    for(index;index<len;index++)
+    for(index;index<len+1;index++)
     {
+        // if index=len the we should check if word exist
+        if(loca1->word)
+        {
+            return true;
+        }
         // making character to integer to use function like isalpha
         int c=word[index];
-        
+        int num= c-'a';
         //if is alpha then its between 0-25 and else its a apsotrophe so 26
-        if(isalpha(c))
+        if(isalpha(c)&&index=0)
         {
-            int num= c-'a';
-            loca=root->children[num];
+            loca1=root->chil[num];
+        }
+        else if(isalpha(c))
+        {
+            loca1=loca->chil[num];
         }
         else
         {
-            loca=loca->children;
+            loca=loca->chil[26];
         }
     }    
     
