@@ -25,10 +25,10 @@ double calculate(const struct rusage* b, const struct rusage* a);
 int main(int argc, char* argv[])
 {
     // check for correct number of args
-    if (argc != 2 && argc != 3)
+    // if (argc != 2 && argc != 3)
     {
-        printf("Usage: speller [dictionary] text\n");
-        return 1;
+       // printf("Usage: speller [dictionary] text\n");
+    //    return 1;
     }
 
     // structs for timing data
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     getrusage(RUSAGE_SELF, &before);
     bool loaded = load(dictionary);
     getrusage(RUSAGE_SELF, &after);
-
+    
     // abort if dictionary not loaded
     if (!loaded)
     {
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 
     // calculate time to load dictionary
     time_load = calculate(&before, &after);
-
+argv[1]="texts/austinpowers.txt";
     // try to open text
     char* text = (argc == 3) ? argv[2] : argv[1];
     FILE* fp = fopen(text, "r");
@@ -64,17 +64,18 @@ int main(int argc, char* argv[])
         unload();
         return 1;
     }
-
+    
     // prepare to report misspellings
     printf("\nMISSPELLED WORDS\n\n");
-
+    
     // prepare to spell-check
     int index = 0, misspellings = 0, words = 0;
     char word[LENGTH+1];
-
+    
     // spell-check each word in text
     for (int c = fgetc(fp); c != EOF; c = fgetc(fp))
     {
+        
         // allow only alphabetical characters and apostrophes
         if (isalpha(c) || (c == '\'' && index > 0))
         {
@@ -111,7 +112,7 @@ int main(int argc, char* argv[])
 
             // update counter
             words++;
-
+            
             // check word's spelling
             getrusage(RUSAGE_SELF, &before);
             bool misspelled = !check(word);

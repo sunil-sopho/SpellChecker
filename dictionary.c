@@ -53,7 +53,7 @@ bool check(const char* word)
         // making character to integer to use function like isalpha
         int c=word[index];
         int num= tolower(c)-'a';
-        printf("%d",num);
+        
         //if is alpha then its between 0-25 and else its a apsotrophe so 26
         if(isalpha(c)&&index==0)
         {
@@ -61,7 +61,6 @@ bool check(const char* word)
         }
         else if(isalpha(c))
         {
-            printf("%d",num);
             loca1=loca1->chil[num];
             
             // if loca1 becomes null then word doesnt exist
